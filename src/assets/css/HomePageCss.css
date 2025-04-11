@@ -1,0 +1,37 @@
+.fa-circle-play{
+    font-size: 100px;
+}
+
+.fa-user-graduate, .fa-chalkboard-user, .fa-person-pregnant, .fa-face-smile{
+    font-size: 80px;
+    margin-bottom: 10px;
+}
+
+.divider{
+    height: 100px;
+}
+
+.stat-card{
+    height: 250px!important;
+}
+
+.category-card{
+    height: 250px!important;
+}
+
+.activity-card{
+    height: 150px!important;
+}
+
+.learners-say-card{
+    height: 400px!important;
+}
+
+.learners-say-card-header{
+    background-color: white!important;
+}
+
+.card{
+    border: 2px solid black;
+    height: 250px;
+}
