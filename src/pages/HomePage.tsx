@@ -6,7 +6,7 @@ export function HomePage() {
         <>
             {/*<HeaderComponent/>*/}
             <div>
-                <div className="container-fluid bg-body-secondary">
+                <div className="container-fluid bg-body-secondary" >
                     <div className="row bg-white" style={{height: '65vh'}}>
                         <div className="col-12 col-lg-6 d-flex align-items-center justify-content-center">
                             <div className="row  d-flex align-items-center justify-content-center px-5">
