@@ -1,8 +1,15 @@
 import api from "../config/AxiosConfig";
 
+interface User {
+    id: number;
+    name: string;
+    email: string;
+    role: "ADMIN" | "STUDENT" | "TEACHER";
+}
+
 interface LoginResponse {
+    user: User;
     token: string;
-    user: { id: number; name: string; email: string };
 }
 
 interface RegisterResponse {
@@ -12,7 +19,6 @@ interface RegisterResponse {
 
 export const loginUser = async (email: string, password: string): Promise<LoginResponse> => {
     const response = await api.post<LoginResponse>("/auth/sign-in", {email, password});
-    localStorage.setItem("authToken", response.data.token);
     return response.data;
 };
 
@@ -22,6 +28,13 @@ export const registerUser = async (
     password: string
 ): Promise<RegisterResponse> => {
     const response = await api.post<RegisterResponse>("/auth/sign-up", {name, email, password});
-    console.log(response)
     return response.data;
+};
+
+export const logoutUser = async (): Promise<void> => {
+    try {
+        await api.post("/auth/logout");
+    } catch (error) {
+        console.error("Logout error:", error);
+    }
 };

@@ -5,36 +5,76 @@ import FooterComponent from "./components/FooterComponent";
 import { LoginComponent } from "./pages/auth/Login";
 import { RegisterComponent } from "./pages/auth/Register";
 import { AdminDashboardComponent } from "./pages/admin/AdminDashboard";
-import ProtectedRoute from "./ProtectedRoutes";
+import { StudentDashboardComponent } from "./pages/student/StudentDashboard";
+import { TeacherDashboardComponent } from "./pages/teacher/TeacherDashboard";
+import ProtectedRoute from "./ProtectedRoute";
 import { useUser } from "./context/UserContext";
 import { HomePage } from "./pages/HomePage";
 import "./App.css";
 
 const App: React.FC = () => {
-    const { isAuthenticated } = useUser();
+    const { isAuthenticated, isLoading, user } = useUser();
     const location = useLocation();
 
-    const hideHeaderFooter = location.pathname === "/login" || location.pathname === "/register";
+    // Show header only on homepage
+    const showHeader = location.pathname === "/";
+    const showFooter = location.pathname !== "/login" && location.pathname !== "/register";
 
     return (
         <>
-            {!hideHeaderFooter && <HeaderComponent />}
+            {showHeader && <HeaderComponent />}
+
             <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/login" element={<LoginComponent />} />
                 <Route path="/register" element={<RegisterComponent />} />
+
+                {/* Protected Routes with Role-based Redirect */}
                 <Route
-                    path="/admin"
+                    path="/admin-dashboard"
                     element={
-                        <ProtectedRoute isAuthenticated={isAuthenticated}>
+                        <ProtectedRoute
+                            isAuthenticated={isAuthenticated}
+                            isLoading={isLoading}
+                            roleRequired="ADMIN"
+                            userRole={user?.role}
+                        >
                             <AdminDashboardComponent />
                         </ProtectedRoute>
                     }
                 />
-                {/* Optional: Redirect unknown routes */}
+                <Route
+                    path="/student-dashboard"
+                    element={
+                        <ProtectedRoute
+                            isAuthenticated={isAuthenticated}
+                            isLoading={isLoading}
+                            roleRequired="STUDENT"
+                            userRole={user?.role}
+                        >
+                            <StudentDashboardComponent />
+                        </ProtectedRoute>
+                    }
+                />
+                <Route
+                    path="/teacher-dashboard"
+                    element={
+                        <ProtectedRoute
+                            isAuthenticated={isAuthenticated}
+                            isLoading={isLoading}
+                            roleRequired="TEACHER"
+                            userRole={user?.role}
+                        >
+                            <TeacherDashboardComponent />
+                        </ProtectedRoute>
+                    }
+                />
+
+                {/* Fallback route */}
                 <Route path="*" element={<Navigate to="/" />} />
             </Routes>
-            {!hideHeaderFooter && <FooterComponent />}
+
+            {showFooter && <FooterComponent />}
         </>
     );
 };

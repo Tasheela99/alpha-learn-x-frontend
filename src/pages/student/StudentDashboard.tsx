@@ -22,7 +22,7 @@ import SettingsIcon from "@mui/icons-material/Settings";
 import { useUser } from "../../context/UserContext";
 import { useState } from "react";
 
-export function AdminDashboardComponent() {
+export function StudentDashboardComponent() {
     const { user, isAuthenticated, logout } = useUser();
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
@@ -50,7 +50,7 @@ export function AdminDashboardComponent() {
                         {isDrawerOpen ? <CloseIcon /> : <MenuIcon />}
                     </IconButton>
                     <Typography variant="h6" noWrap>
-                        Admin Dashboard
+                        Student Dashboard
                     </Typography>
                 </Toolbar>
             </AppBar>

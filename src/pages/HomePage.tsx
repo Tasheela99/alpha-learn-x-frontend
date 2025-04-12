@@ -1,9 +1,5 @@
-import React from "react";
-import {Button, Box, Typography, Container} from "@mui/material";
-import {useUser} from "../../context/UserContext";
+
 import "../assets/css/HomePageCss.css"
-import FooterComponet from "../components/FooterComponent.tsx"
-import HeaderComponent from "../components/HeaderComponent.tsx"
 
 export function HomePage() {
     return (

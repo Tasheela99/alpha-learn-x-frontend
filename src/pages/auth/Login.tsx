@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import {
     Box,
     Button,
@@ -11,14 +11,13 @@ import {
     Typography,
     CircularProgress,
 } from "@mui/material";
-import { useUser } from "../../context/UserContext";
-import { useNavigate, useLocation, Link as RouterLink } from "react-router-dom";
-import { loginUser } from "../../api/AuthApi";
+import {useUser} from "../../context/UserContext";
+import {useNavigate, Link as RouterLink} from "react-router-dom";
+import {loginUser} from "../../api/AuthApi";
 
 export function LoginComponent() {
-    const { login } = useUser();
+    const {login} = useUser();
     const navigate = useNavigate();
-    const location = useLocation();
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -43,17 +42,26 @@ export function LoginComponent() {
             setIsLoading(true);
             setError("");
 
-            const data = await loginUser(email, password);
+            const data = await loginUser(email, password);  // Login API call
 
             if (data && data.user && data.user.id) {
-                login(data.user);
-                if (!rememberMe) {
-                    sessionStorage.setItem("authToken", data.token);
-                    localStorage.removeItem("authToken");
-                }
+                // Store the authentication token
+                localStorage.setItem("authToken", data.token);
+                sessionStorage.removeItem("authToken");
 
-                const redirectTo = location.state?.from?.pathname || "/";
-                navigate(redirectTo);
+                // Store user data in localStorage (now handled by the context)
+                login(data.user);  // This will now store user in localStorage via context
+
+                const {role} = data.user;
+                if (role === "ADMIN") {
+                    navigate("/admin-dashboard");
+                } else if (role === "STUDENT") {
+                    navigate("/student-dashboard");
+                } else if (role === "TEACHER") {
+                    navigate("/teacher-dashboard");
+                } else {
+                    navigate("/");
+                }
             } else {
                 setError("Invalid response from server. Please try again.");
             }
@@ -65,6 +73,7 @@ export function LoginComponent() {
         }
     };
 
+
     const handleKeyPress = (e: React.KeyboardEvent) => {
         if (e.key === "Enter") {
             handleLogin();
@@ -73,7 +82,7 @@ export function LoginComponent() {
 
     return (
         <Container maxWidth="xs">
-            <Box sx={{ mt: 8, textAlign: "center" }}>
+            <Box sx={{mt: 8, textAlign: "center"}}>
                 <Typography variant="h4" gutterBottom>
                     Welcome Back
                 </Typography>
@@ -82,7 +91,7 @@ export function LoginComponent() {
                 </Typography>
 
                 {error && (
-                    <Typography color="error" sx={{ mb: 2 }}>
+                    <Typography color="error" sx={{mb: 2}}>
                         {error}
                     </Typography>
                 )}
@@ -110,7 +119,7 @@ export function LoginComponent() {
                     onKeyDown={handleKeyPress}
                 />
 
-                <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", mt: 1 }}>
+                <Box sx={{display: "flex", justifyContent: "space-between", alignItems: "center", mt: 1}}>
                     <FormControlLabel
                         control={
                             <Checkbox
@@ -127,7 +136,7 @@ export function LoginComponent() {
                         to="/forgot-password"
                         variant="body2"
                         underline="hover"
-                        sx={{ cursor: "pointer" }}
+                        sx={{cursor: "pointer"}}
                     >
                         Forgot password?
                     </Link>
@@ -137,17 +146,17 @@ export function LoginComponent() {
                     fullWidth
                     variant="contained"
                     color="primary"
-                    sx={{ mt: 2 }}
+                    sx={{mt: 2}}
                     onClick={handleLogin}
                     disabled={isLoading}
                 >
-                    {isLoading ? <CircularProgress size={24} color="inherit" /> : "Login"}
+                    {isLoading ? <CircularProgress size={24} color="inherit"/> : "Login"}
                 </Button>
 
-                <Grid container justifyContent="center" sx={{ mt: 2 }}>
+                <Grid container justifyContent="center" sx={{mt: 2}}>
                     <Grid>
                         <Typography variant="body2">
-                            Don’t have an account?{" "}
+                            Don't have an account?{" "}
                             <Link component={RouterLink} to="/register" underline="hover">
                                 Register here
                             </Link>
