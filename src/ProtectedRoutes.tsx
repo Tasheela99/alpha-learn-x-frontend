@@ -1,13 +1,19 @@
-import { Navigate, Route, RouteProps } from "react-router-dom";
-import {JSX} from "react";
+import { Navigate, useLocation } from "react-router-dom";
+import { ReactNode } from "react";
 
-interface ProtectedRouteProps extends RouteProps {
-    element: JSX.Element;
+interface ProtectedRouteProps {
+    children: ReactNode;
     isAuthenticated: boolean;
 }
 
-const ProtectedRouteProps = ({ element, isAuthenticated, ...rest }: ProtectedRouteProps) => {
-    return isAuthenticated ? element : <Navigate to="/login" />;
+const ProtectedRoute = ({ children, isAuthenticated }: ProtectedRouteProps) => {
+    const location = useLocation();
+
+    if (!isAuthenticated) {
+        return <Navigate to="/login" state={{ from: location }} replace />;
+    }
+
+    return <>{children}</>;
 };
 
-export default ProtectedRouteProps;
+export default ProtectedRoute;

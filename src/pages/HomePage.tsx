@@ -8,7 +8,7 @@ import HeaderComponent from "../components/HeaderComponent.tsx"
 export function HomePage() {
     return (
         <>
-            <HeaderComponent/>
+            {/*<HeaderComponent/>*/}
             <div>
                 <div className="container-fluid bg-body-secondary">
                     <div className="row bg-white" style={{height: '65vh'}}>
@@ -309,7 +309,7 @@ export function HomePage() {
                         </div>
                     </div>
                 </div>
-                <FooterComponet/>
+                {/*<FooterComponet/>*/}
             </div>
         </>
     );

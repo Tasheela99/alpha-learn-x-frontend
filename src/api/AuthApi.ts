@@ -17,13 +17,11 @@ export const loginUser = async (email: string, password: string): Promise<LoginR
 };
 
 export const registerUser = async (
-    firstName: string,
-    lastName: string,
-    mobile: string,
+    name: string,
     email: string,
     password: string
 ): Promise<RegisterResponse> => {
-    const response = await api.post<RegisterResponse>("/auth/sign-up", {firstName, lastName, mobile, email, password});
+    const response = await api.post<RegisterResponse>("/auth/sign-up", {name, email, password});
     console.log(response)
     return response.data;
 };
