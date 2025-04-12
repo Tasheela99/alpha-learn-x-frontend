@@ -1,16 +1,12 @@
-import React from "react";
-import {Button, Box, Typography, Container} from "@mui/material";
-import {useUser} from "../../context/UserContext";
+
 import "../assets/css/HomePageCss.css"
-import FooterComponet from "../components/FooterComponent.tsx"
-import HeaderComponent from "../components/HeaderComponent.tsx"
 
 export function HomePage() {
     return (
         <>
-            <HeaderComponent/>
+            {/*<HeaderComponent/>*/}
             <div>
-                <div className="container-fluid bg-body-secondary">
+                <div className="container-fluid bg-body-secondary" >
                     <div className="row bg-white" style={{height: '65vh'}}>
                         <div className="col-12 col-lg-6 d-flex align-items-center justify-content-center">
                             <div className="row  d-flex align-items-center justify-content-center px-5">
@@ -309,7 +305,7 @@ export function HomePage() {
                         </div>
                     </div>
                 </div>
-                <FooterComponet/>
+                {/*<FooterComponet/>*/}
             </div>
         </>
     );

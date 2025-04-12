@@ -1,28 +1,81 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import "../assets/css/HeaderComponent.css"
+import MenuIcon from "@mui/icons-material/Menu";
+import { IconButton } from "@mui/material";
+import { useUser } from "../context/UserContext";
+import { NavLink } from "react-router-dom";
+import "../assets/css/HeaderComponent.css";
 
-const HeaderComponent = () => {
+const HeaderComponent = ({ toggleDrawer }:any) => {
+    const { isAuthenticated, user, logout } = useUser();
+
     return (
         <nav className="navbar navbar-expand-lg bg-white shadow-sm">
-            <div className="container d-flex align-items-center">
-                {/* Left Section: Logo & Brand */}
+            <div className="container d-flex align-items-center justify-content-between">
+                {/* Left Section: Menu Icon + Logo */}
                 <div className="d-flex align-items-center">
+                    {toggleDrawer && (
+                        <IconButton
+                            edge="start"
+                            color="primary"
+                            onClick={toggleDrawer}
+                            className="me-2"
+                        >
+                            <MenuIcon />
+                        </IconButton>
+                    )}
                     <div className="logo-circle me-2">Logo</div>
-                    <span className="fw-bold brand-text">Tinker Alpha</span>
+                    <span className="brand-text">Tinker Alpha</span>
                 </div>
 
-                {/* Middle Section: Navigation Links */}
+                {/* Middle Section: Nav Links */}
                 <div className="mx-auto d-flex align-items-center nav-links">
-                    <button className="btn btn-light active">Home</button>
-                    <Link to="#" className="nav-link">Subjects</Link>
-                    <Link to="#" className="nav-link">Community</Link>
-                    <Link to="#" className="nav-link">Help</Link>
+                    <NavLink
+                        to="/"
+                        className={({ isActive }) =>
+                            `nav-link ${isActive ? "nav-link--active" : ""}`
+                        }
+                    >
+                        Home
+                    </NavLink>
+                    <NavLink
+                        to="/subjects"
+                        className={({ isActive }) =>
+                            `nav-link ${isActive ? "nav-link--active" : ""}`
+                        }
+                    >
+                        Subjects
+                    </NavLink>
+                    <NavLink
+                        to="/community"
+                        className={({ isActive }) =>
+                            `nav-link ${isActive ? "nav-link--active" : ""}`
+                        }
+                    >
+                        Community
+                    </NavLink>
+                    <NavLink
+                        to="/help"
+                        className={({ isActive }) =>
+                            `nav-link ${isActive ? "nav-link--active" : ""}`
+                        }
+                    >
+                        Help
+                    </NavLink>
                 </div>
 
-                {/* Right Section: Register Button */}
+                {/* Right Section: User */}
                 <div>
-                    <button className="btn btn-light">Register Now</button>
+                    {isAuthenticated ? (
+                        <div className="d-flex align-items-center gap-3">
+                            <span className="fw-bold">{user?.name}</span>
+                            <button className="btn btn-outline-danger btn-sm" onClick={logout}>
+                                Logout
+                            </button>
+                        </div>
+                    ) : (
+                        <NavLink to="/register">
+                            <button className="btn btn-light">Register Now</button>
+                        </NavLink>
+                    )}
                 </div>
             </div>
         </nav>
