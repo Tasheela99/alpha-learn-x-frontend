@@ -22,7 +22,7 @@ const App: React.FC = () => {
 
     return (
         <>
-            {showHeader && <HeaderComponent />}
+            {/*{showHeader && <HeaderComponent />}*/}
 
             <Routes>
                 <Route path="/" element={<HomePage />} />
@@ -74,7 +74,7 @@ const App: React.FC = () => {
                 <Route path="*" element={<Navigate to="/" />} />
             </Routes>
 
-            {showFooter && <FooterComponent />}
+            {/*{showFooter && <FooterComponent />}*/}
         </>
     );
 };
