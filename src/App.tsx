@@ -10,14 +10,15 @@ import { TeacherDashboardComponent } from "./pages/teacher/TeacherDashboard";
 import ProtectedRoute from "./ProtectedRoute";
 import { useUser } from "./context/UserContext";
 import { HomePage } from "./pages/HomePage";
+import { Activity1 } from "./pages/teacher/activity/Activity1";
 import "./App.css";
 
 const App: React.FC = () => {
-    const { isAuthenticated, isLoading, user } = useUser();
+    const { isAuthenticated, isLoading, user } = useUser(); 
     const location = useLocation();
 
     // Show header only on homepage
-    const showHeader = location.pathname === "/";
+    const showHeader = location.pathname === "/" || "/activity1" ;
     const showFooter = location.pathname !== "/login" && location.pathname !== "/register";
 
     return (
@@ -28,6 +29,9 @@ const App: React.FC = () => {
                 <Route path="/" element={<HomePage />} />
                 <Route path="/login" element={<LoginComponent />} />
                 <Route path="/register" element={<RegisterComponent />} />
+
+                {/* still not set to Protected Route */}
+                <Route path="/activity1" element={<Activity1/>} />  
 
                 {/* Protected Routes with Role-based Redirect */}
                 <Route

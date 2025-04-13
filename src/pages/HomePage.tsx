@@ -1,5 +1,6 @@
 
-import "../assets/css/HomePageCss.css"
+import "../assets/css/HomePageCss.css";
+
 
 export function HomePage() {
     return (
