@@ -25,7 +25,7 @@ import React, {useState, useEffect} from "react";
 import {getAllUsers, deleteUser} from "../../api/UserApi.ts";
 import {registerUser} from "../../api/AuthApi.ts";
 
-export function ManageUsers() {
+export function ManageUsersComponent() {
     const [users, setUsers] = useState<any[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
@@ -57,7 +57,7 @@ export function ManageUsers() {
         }
     };
 
-    const handleChangePage = (event: any, newPage: any) => {
+    const handleChangePage = (_event: any, newPage: any) => {
         setPage(newPage);
     };
 
@@ -79,6 +79,7 @@ export function ManageUsers() {
             setOpenDialog(false);
             setName("");
             setEmail("");
+            setPhone("");
             setPassword("");
             setRole("");
         } catch (err) {
@@ -93,6 +94,7 @@ export function ManageUsers() {
         setName("");
         setEmail("");
         setPassword("");
+        setPhone("");
         setRole("");
         setError("");
     };
