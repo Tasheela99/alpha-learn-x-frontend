@@ -1,0 +1,49 @@
+.activity-heading {
+    font-size: 18px;
+    font-family: 'Inter',sans-serif;
+    font-weight: bold   ;
+    color: black;
+}
+.outer-card{
+    height: 70vh;
+     background-color: #D9D9D9 ;
+
+}
+.outer-white-card{
+    height: 70vh;
+     background-color: #ffffff ;
+
+}
+.inner-card{
+    height: 85%;
+     background-color: #D9D9D9 ;
+
+}
+.sub-text{
+    font-weight: 450;
+}
+.chart-icon{
+    size: 20px;
+}
+.l-shape-pseudo {
+    position: relative;
+    width: 100vh;
+    height: 70vh;
+    background-color: #ffffff;
+  }
+  .l-shape-pseudo::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 160vh;
+    height: 40vh;
+    background-color: #fdfdfd;
+  }
+.activity-button{
+    background-color: #666666;
+}   
+.cards{
+    height: 70vh;
+
+}
