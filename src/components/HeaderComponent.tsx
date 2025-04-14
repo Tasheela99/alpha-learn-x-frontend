@@ -2,32 +2,42 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { IconButton } from "@mui/material";
 import { useUser } from "../context/UserContext";
 import { NavLink } from "react-router-dom";
+import { useState } from "react";
 import "../assets/css/HeaderComponent.css";
 
-const HeaderComponent = ({ toggleDrawer }:any) => {
+const HeaderComponent = ({ toggleDrawer }: any) => {
     const { isAuthenticated, user, logout } = useUser();
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    
+    const toggleMobileMenu = () => {
+        setMobileMenuOpen(!mobileMenuOpen);
+    };
 
     return (
         <nav className="navbar navbar-expand-lg bg-white shadow-sm">
             <div className="container d-flex align-items-center justify-content-between">
-                {/* Left Section: Menu Icon + Logo */}
                 <div className="d-flex align-items-center">
                     {toggleDrawer && (
                         <IconButton
                             edge="start"
                             color="primary"
                             onClick={toggleDrawer}
-                            className="me-2"
+                            className="me-2 d-none d-lg-flex"
                         >
                             <MenuIcon />
                         </IconButton>
                     )}
-                    <div className="logo-circle me-2">Logo</div>
+                    <IconButton 
+                        className="d-lg-none me-2"
+                        onClick={toggleMobileMenu}
+                    >
+                        <MenuIcon />
+                    </IconButton>
+                    <div className="logo-circle">Logo</div>
                     <span className="brand-text">Tinker Alpha</span>
                 </div>
 
-                {/* Middle Section: Nav Links */}
-                <div className="mx-auto d-flex align-items-center nav-links">
+                <div className={`mx-auto nav-links ${mobileMenuOpen ? 'd-flex' : 'd-none d-lg-flex'}`}>
                     <NavLink
                         to="/"
                         className={({ isActive }) =>
@@ -62,8 +72,7 @@ const HeaderComponent = ({ toggleDrawer }:any) => {
                     </NavLink>
                 </div>
 
-                {/* Right Section: User */}
-                <div>
+                <div className={mobileMenuOpen ? 'mt-3 w-100' : ''}>
                     {isAuthenticated ? (
                         <div className="d-flex align-items-center gap-3">
                             <span className="fw-bold">{user?.name}</span>

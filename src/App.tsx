@@ -10,24 +10,39 @@ import { TeacherDashboardComponent } from "./pages/teacher/TeacherDashboard";
 import ProtectedRoute from "./ProtectedRoute";
 import { useUser } from "./context/UserContext";
 import { HomePage } from "./pages/HomePage";
+import { Activity1 } from "./pages/teacher/activity/Activity1";
+import { Activity2 } from "./pages/teacher/activity/Activity2";
+import { Activity3 } from "./pages/teacher/activity/Activity3";
+
+import { Activity4 } from "./pages/teacher/activity/Activity4";
+
 import "./App.css";
 
 const App: React.FC = () => {
-    const { isAuthenticated, isLoading, user } = useUser();
+    const { isAuthenticated, isLoading, user } = useUser(); 
     const location = useLocation();
 
     // Show header only on homepage
-    const showHeader = location.pathname === "/";
+    const showHeader = location.pathname === "/" || "/activity1"|| "/activity2" || "/activity3"|| "/activity4" ;
     const showFooter = location.pathname !== "/login" && location.pathname !== "/register";
 
     return (
         <>
-            {showHeader && <HeaderComponent />}
+            {/*{showHeader && <HeaderComponent />}*/}
 
             <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/login" element={<LoginComponent />} />
                 <Route path="/register" element={<RegisterComponent />} />
+
+                {/* still not set to Protected Route */}
+                <Route path="/activity1" element={<Activity1/>} /> 
+                <Route path="/activity2" element={<Activity2/>} />  
+                <Route path="/activity3" element={<Activity2/>} />  
+
+                <Route path="/activity4" element={<Activity2/>} />  
+
+ 
 
                 {/* Protected Routes with Role-based Redirect */}
                 <Route
@@ -74,7 +89,7 @@ const App: React.FC = () => {
                 <Route path="*" element={<Navigate to="/" />} />
             </Routes>
 
-            {showFooter && <FooterComponent />}
+            {/*{showFooter && <FooterComponent />}*/}
         </>
     );
 };

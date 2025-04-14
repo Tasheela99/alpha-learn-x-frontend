@@ -1,8 +1,43 @@
+/* FooterComponent.css */
+footer {
+    font-size: 14px;
+}
+
+footer h6 {
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
 .custom-link {
     text-decoration: none;
     color: #59595A;
-    /* font-family: "Be Vietnam Pro", sans-serif; */
+    transition: color 0.2s;
 }
-.black-icon{
-    color:#333333;
+
+.custom-link:hover {
+    color: #333;
+}
+
+.black-icon {
+    color: #333333;
+    transition: color 0.2s;
+}
+
+.black-icon:hover {
+    color: #000;
+}
+
+.social-icons {
+    display: flex;
+    align-items: center;
+}
+
+@media (max-width: 767px) {
+    .social-icons {
+        margin-bottom: 10px;
+    }
+    
+    footer h6 {
+        margin-bottom: 10px;
+    }
 }
