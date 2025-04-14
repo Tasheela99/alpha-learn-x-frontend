@@ -1,6 +1,6 @@
 import "../../../assets/css/Activity.css";
 import ButtonCarousel from "../../../components/common/ComponentCarousel";
-export function Activity1() {
+export function Activity2() {
   return (
     <div>
       <div className="container-fluid bg-body-secondary">
@@ -9,30 +9,21 @@ export function Activity1() {
             <div className="row  d-flex align-items-center justify-content-center px-5">
               <div className="col-12">
                 <h3 className="activity-heading">
-                  Activity 1 - Simple Electric circuit
-                </h3>
+                Lesson 2 - Building a simple motor                </h3>
               </div>
-              <div className="container my-4 p-4 text-white rounded outer-card">
+              <div className="container my-4 p-4 text-white rounded outer-white-card">
                 <div className="row h-100 d-flex justify-content-center align-items-center">
-                  <div className="row justify-content-center activity-heading ">
-                    Introduction video
-                  </div>
-                  <div className="col-11 col-md-10 col-lg-9 bg-white rounded p-4 inner-card d-flex justify-content-center align-items-center">
-                    <i
-                      className="fa-solid fa-circle-play "
-                      style={{ color: "black" }}
-                    ></i>
-                  </div>
+                 
+                  
                 </div>
               </div>
             </div>
             <div className="row mt-5">
               <div className="col">
                 <div className="row  px-5">
-                  <h3 className="activity-heading">Activity o1</h3>
+                  <h3 className="activity-heading">Activity o2</h3>
                   <h3 className="activity-heading sub-text">
-                    Let’s Light the Bulb !
-                  </h3>
+                  Build your own motor                  </h3>
                 </div>
               </div>
               <div className="col justify-content-end text-end px-5 ">
@@ -54,11 +45,11 @@ export function Activity1() {
         <div className="container-fluid py-3">
           <ButtonCarousel />
         </div>
-        <p className="px-5 mx-5">Time Limit: 10 minutes</p>
+        <p className="px-5 mx-5">Time Limit: 15 minutes</p>
         <div className="row px-5 mx-5 mt-5 ">
           <div className="col-1"></div>
-          <div className="l-shape-pseudo"></div>
-        </div>
+          <div className="container my-4 p-4 text-white rounded cards"></div>
+          </div>
         <div className="row px-5 mx-5 mt-5 ">
           <div className="col d-flex justify-content-center">
             {" "}
