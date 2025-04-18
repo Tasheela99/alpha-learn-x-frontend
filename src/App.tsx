@@ -38,9 +38,9 @@ const App: React.FC = () => {
                 {/* still not set to Protected Route */}
                 <Route path="/activity1" element={<Activity1/>} /> 
                 <Route path="/activity2" element={<Activity2/>} />  
-                <Route path="/activity3" element={<Activity2/>} />  
+                <Route path="/activity3" element={<Activity3/>} />  
 
-                <Route path="/activity4" element={<Activity2/>} />  
+                <Route path="/activity4" element={<Activity4/>} />  
 
  
 

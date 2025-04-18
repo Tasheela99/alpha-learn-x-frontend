@@ -57,7 +57,11 @@ export function Activity1() {
         <p className="px-5 mx-5">Time Limit: 10 minutes</p>
         <div className="row px-5 mx-5 mt-5 ">
           <div className="col-1"></div>
-          <div className="l-shape-pseudo"></div>
+          <div className="l-shape-pseudo">
+            <div className="inner-content d-flex justify-content-center align-items-center">
+              <div className="row py-3  px-5 bg-white  radius">Hint</div>
+            </div>
+          </div>{" "}
         </div>
         <div className="row px-5 mx-5 mt-5 ">
           <div className="col d-flex justify-content-center">
@@ -65,22 +69,24 @@ export function Activity1() {
             <button className="btn btn-light px-5 activity-button">Back</button>
           </div>
           <div className="col  ">
-            <div className="row d-flex justify-content-center "><i className="fa-solid fa-qrcode fa-3x  d-flex justify-content-center"></i></div>
-            <div className="row d-flex justify-content-center">View your 3D circuit</div>
+            <div className="row d-flex justify-content-center ">
+              <i className="fa-solid fa-qrcode fa-3x  d-flex justify-content-center"></i>
+            </div>
+            <div className="row d-flex justify-content-center">
+              View your 3D circuit
+            </div>
           </div>
           <div className="col  d-flex justify-content-center">
             {" "}
-            <button className="btn btn-light px-5 activity-button">Next Level</button>
+            <button className="btn btn-light px-5 activity-button">
+              Next Level
+            </button>
           </div>
         </div>
 
         <div className="row">
-                        <div className="col-12 divider"></div>
-                    </div>
-
-       
-
-        
+          <div className="col-12 divider"></div>
+        </div>
       </div>
       {/*<FooterComponet/>*/}
     </div>
