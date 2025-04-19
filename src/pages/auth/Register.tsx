@@ -16,6 +16,7 @@ export function RegisterComponent() {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [phone, setPhone] = useState("");
 
     const [error, setError] = useState("");
     const [isLoading, setIsLoading] = useState(false);
@@ -96,7 +97,17 @@ export function RegisterComponent() {
                     onKeyDown={handleKeyPress}
                     disabled={isLoading}
                 />
-
+                <TextField
+                    fullWidth
+                    label="Phone"
+                    type="text"
+                    margin="normal"
+                    variant="outlined"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                    onKeyDown={handleKeyPress}
+                    disabled={isLoading}
+                />
                 <TextField
                     fullWidth
                     label="Password"
