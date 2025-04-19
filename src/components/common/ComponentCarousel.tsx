@@ -33,21 +33,21 @@ const ComponentCarousel = () => {
     <div className="container-fluid py-3">
       <div className="row justify-content-center align-items-center g-2">
         <div className="col-auto">
-          <button className="border border-1 border-dark py-1 px-2" onClick={handlePrev}>
+          <button className="border border-1 bg-white border-dark py-1 px-2" onClick={handlePrev}>
             <i className="fa-solid fa-chevron-left"></i>
           </button>
         </div>
         
         {visibleComponents.map((component, index) => (
           <div className="col-auto px-2" key={index}>
-            <div className="border border-1 border-dark py-1 px-3 d-flex justify-content-center">
+            <div className="border border-1 border-dark bg-white py-1 px-3 d-flex justify-content-center">
               {component}
             </div>
           </div>
         ))}
         
         <div className="col-auto">
-          <button className="border border-1 border-dark py-1 px-2" onClick={handleNext}>
+          <button className="border border-1  bg-white border-dark py-1 px-2" onClick={handleNext}>
             <i className="fa-solid fa-chevron-right"></i>
           </button>
         </div>

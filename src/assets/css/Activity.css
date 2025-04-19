@@ -27,23 +27,45 @@
 }
 .l-shape-pseudo {
     position: relative;
-    width: 100vh;
+    width: 160vh; /* Match the width of the pseudo-element */
     height: 70vh;
     background-color: #ffffff;
-  }
-  .l-shape-pseudo::after {
+}
+.l-shape-pseudo::after {
     content: '';
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 160vh;
+    width: 100vh; /* Smaller than parent */
     height: 40vh;
     background-color: #fdfdfd;
-  }
+}
+.inner-content {
+    position: absolute;
+    top: 0;
+    left: 100vh; /* Start where the horizontal part of L ends */
+    width: calc(160vh - 100vh); /* Remaining width */
+    height: calc(70vh - 40vh); /* Height above the L's base */
+    background-color: rgba(0,0,0,0.1);
+}
 .activity-button{
     background-color: #666666;
 }   
 .cards{
     height: 70vh;
 
+}
+.radius{
+    border-radius: 10px;
+}
+.emty-box{
+height: 9vh;
+}
+.color-black{
+    color: black;
+
+
+}
+.emty-box{
+   width: 20vh;
 }
